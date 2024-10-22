@@ -26,8 +26,8 @@ La **CDF** de una distribución da la probabilidad acumulada de que la variable 
 
 CDF(X<=x) = P(X<=x) = sum(k=0,x) P(X=k) => es la probabilidad de obtener hasta x éxitos en una serie de n ensayos con probabilidad de éxito p.
 
-**PDF**
-
+El **PDF**
+**Memorylesseness**
 **Mean**
 **E(X)**
 **V(X)**
@@ -122,6 +122,12 @@ Para que un fenómeno sea modelado por una distribución de Poisson, debe cumpli
 
 ## Distribuciones Continuas
 Distribución de probabilidad que describe el comportamiento de una variable aleatoria continua.
+
+Caracteristicas:
++ **Intervalos de Valores**: número infinito de valores en un rango específico.
++ **Función de Densidad de Probabilidad (PDF)**: En lugar de tener una PMF, utilizan una PDF que describe la probabilidad de que la variable aleatoria tome un valor en un intervalo específico. La probabilidad de que una variable continua tome un valor exacto es siempre cero; en cambio, se considera la probabilidad de que caiga dentro de un rango.
++ **Integración**: Para encontrar la probabilidad de que una variable aleatoria continua caiga dentro de un intervalo, se calcula el área bajo la curva de la PDF en ese intervalo. Esto se realiza mediante la integración de la PDF en los límites del intervalo.
++ **CDF**: la probabilidad de que la variable aleatoria sea menor o igual a un cierto valor. Se calcula integrando la PDF desde el límite inferior hasta el valor específico.
 
 ### Exponencial(lambda)
 + Caracteriza el tiempo transcurrido entre eventos raros (poisson)
