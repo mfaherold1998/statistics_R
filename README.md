@@ -18,20 +18,124 @@ Existen dos tipos principales de variables aleatorias:
 
 ## Algunos conceptos
 
-El **PMF** es una manera de describir las probabilidades asociadas con una variable aleatoria discreta. Asigna una probabilidad a cada valor posible que puede asumir la variable aleatoria. (Las distribuciones continuas no tienen PMF)
+### Cumulative Distribution Function
 
-PMF(X=x) = P(X=x) => Proporciona la probabilidad de que X tome un valor específico x.
+LA CDF de una distribución da la probabilidad acumulada de que la variable aleatoria X tome un valor menor o igual a un cierto valor x: 
 
-La **CDF** de una distribución da la probabilidad acumulada de que la variable aleatoria X tome un valor menor o igual a un cierto valor x.
++ F(x)= P(X<=x) = P(X<=x) = sum(k=0,x)P(X=k) **caso discreto**
++ F(x) = integral(-inf, x) f(x) **caso continuo**
 
-CDF(X<=x) = P(X<=x) = sum(k=0,x) P(X=k) => es la probabilidad de obtener hasta x éxitos en una serie de n ensayos con probabilidad de éxito p.
+> Gráficamente, la CDF de una distribución continua suele tener una forma de "S" o sigmoide, mientras que para distribuciones discretas, es una función escalonada.
 
-El **PDF**
-**Memorylesseness**
-**Mean**
-**E(X)**
-**V(X)**
-**Estimador**
++ Monotona no decreciente
++ Continua por la izquierda
++ F(-inf) = 0
++ F(+inf) = 1
+
+> Que sea continua por la izquierda significa que en cualquier punto x, el valor de la CDF F(x) es igual al límite de la función cuando nos acercamos a x desde valores menores.
+
+### Probability Mass Function
+
+El PMF es una manera de describir las probabilidades asociadas con una variable aleatoria discreta. Asigna una probabilidad a cada valor posible que puede asumir la variable aleatoria. 
+
+f(x) = P(X=x) => Proporciona la probabilidad de que X tome un valor específico x.
+
++ La P de un valor x especifico siempre es mayor que 0
++ La suma de las probabilidades de todos los posibles valores de x es igual a 1
+
+### Probability Density function
+
+El PDF es una función que describe la probabilidad relativa de que una variable aleatoria continua tome un valor específico. A diferencia de las variables aleatorias discretas, donde se utilizan probabilidades exactas, en el caso de las continuas, se trabaja con densidades.
+
+f(x) = P(a<=x<=b) = integral(a,b)f(x)
+
++ Para cada valor de x en el dominio f(x)>=0
++ La integral total en todo su dominio debe ser igual a 1
+
+> El valor del PDF en un punto x no representa la probabilidad de que la variable tome ese valor exacto (ya que la probabilidad de que tome un valor exacto es 0 en una distribución continua), sino la densidad de probabilidad en ese punto. Es decir, indica cuán probable es que la variable aleatoria se encuentre cerca de x.
+
+### Propiedad de Memorylesseness
+
+Es una característica específica de ciertas distribuciones de probabilidad como la distribución **exponencial** y la distribución **geométrica**.
+
+Esto significa que la probabilidad de que el evento ocurra después de un tiempo 
+s+t, dado que ya ha pasado un tiempo 
+s, es igual a la probabilidad de que el evento ocurra después de un tiempo 
+t. 
+En otras palabras, el tiempo que ya ha pasado no proporciona ninguna información sobre el tiempo que queda hasta que ocurra el evento.
+
+Si se conoce que han sucedido m eventos, la propabilidad de que ocurra m+x solo depende de x y no se ve afectada por m.
+
+> En el caso de la **distribución exponencial**, que a menudo se utiliza para modelar el tiempo entre eventos en un proceso de Poisson, si el tiempo de espera hasta el próximo evento sigue una distribución exponencial con parámetro λ, la propiedad de memorylessness se puede entender de la siguiente manera:
+>
+> Si has esperado ya 5 minutos, la probabilidad de que tengas que esperar más de otros 3 minutos es la misma que si no hubieras esperado nada en absoluto.
+
+> En la distribución geométrica, que modela el número de ensayos hasta el primer éxito en una serie de ensayos de Bernoulli (por ejemplo, lanzar una moneda hasta obtener cara), también se aplica la propiedad de memorylessness:
+>
+> Si ya has lanzado la moneda 4 veces sin éxito, la probabilidad de que necesites 3 lanzamientos adicionales para obtener el primer éxito es la misma que si comenzaras a lanzar la moneda desde cero.
+
+### Valor esperado E(X)
+
+Es una medida de tendencia central que representa el valor promedio de una variable aleatoria.
+
+Es una forma de cuantificar el "centro" de la distribución.
+
+**Caso discreto**: E(x) = sum(i) xi*P(X=xi)
+
+**Caso continuo**: E(x) = integral(-inf,inf) x * f(x)
+
+Propiedades:
++ E(c) = c
++ Si x >= 0 entonces E(x) >= 0
++ x<=y  E(x)<=E(y)
++ a<=x<=b  b<=E(x)<=b
++ Si X y Y son independientes E(XY)= E(X)*E(Y)
++ E(X+Y) = E(X) + E(Y)
++ E(cX) = c*E(X)
++ **Linealidad**: E(a+bX) = a + b*E(x)  la media de una combinación lineal de variables aleatorias se puede calcular directamente a partir de las medias individuales.
++ **Interpretación**: La media puede interpretarse como el "punto de equilibrio" de la distribución, donde si se distribuyeran pesos en torno a la media, el sistema estaría equilibrado.
+
+### Varianza V(X)
+Es una medida que indica la dispersión o variabilidad de los valores de una variable aleatoria en torno a su media.
+
+V(X) = E(\[X - EX]^2) = EX^2 - E^2X
+
+**Caso discreto**: V(X) = sum(Rx)(x - EX)^2 * P(X=x)
+
+**Caso continuo**: V(X) = integral(Rx)(x - EX)^2 * f(x)
+
+Propiedades:
++ **No negatividad**: es una suma de cuadrados, nunca puede ser negativa
++ V(c) = 0
++ V(a+bX) = b^2 * V(X)
++ Si X y Y son independientes entonces V(X+Y) = V(X) + V(Y)
++ Si X y Y no son independientes entonces V(X+Y) = V(X) + V(Y) + 2Cov(X,Y)
++ La desviacion estandar es la raiz cuadrada de la varianza
+
+### Mediana
+La mediana es una medida de tendencia central que representa el valor que divide un conjunto de datos ordenado en dos partes iguales. Es decir, es el punto medio de un conjunto de datos, donde el 50% de los valores son menores o iguales a la mediana, y el 50% son mayores o iguales a ella.
+
+Para calcular la mediana, es necesario primero ordenar los datos de menor a mayor.
+
+En una distribución simétrica, como la distribución normal, la mediana coincide con la media (el valor central).
+
+### Estimador
+Es una función o regla matemática que se utiliza para inferir o aproximar un parámetro desconocido de una población, utilizando datos muestrales.
+
+Estimadores comunes:
++ Media muestral: X_
++ Varianza muestral: S^2
++ Proporcion muestral: p^
+
+Propiedades:
++ **Sesgado**: Un estimador es insesgado si su valor esperado es igual al parámetro poblacional que está estimando: E(P^)=P
++ **Consistencia**: Un estimador es consistente si, a medida que el tamaño de la muestra aumenta, el estimador converge al valor verdadero del parámetro poblacional.
++ **Eficiencia**: Un estimador es eficiente si tiene la varianza más baja posible entre todos los estimadores insesgados.
++ **Suficiencia**: Un estimador es suficiente si captura toda la información relevante de la muestra acerca del parámetro.
+
+> Un estimador es una regla o fórmula que se aplica a cualquier muestra para obtener una estimación del parámetro.
+>
+> Una estimación es el valor numérico que se obtiene al aplicar el estimador a una muestra específica.
 
 ## Distribuciones Discretas
 
@@ -144,7 +248,7 @@ Caracteristicas:
 + dado un proceso se tiene que ejecutar el evento de interes en bloques, el resultado se obtiene despues de haber ejecutado todos los bloques
 + X: todos los tiempos que demoraron todos los bloques en ejecutarse
 
-### Normal(Miù(media),Rò^2(desviacion estandar al cuadrado: varianza))
+### Normal o Gaussiana(Miù(media),Rò^2(desviacion estandar al cuadrado: varianza))
 + X{inf-,inf+} 
 + PDF {}
 + CDF {}
