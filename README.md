@@ -8,6 +8,7 @@
 5. [Percentiles](#Percentiles)
 6. [Quantiles](#Quantiles)
 7. [Teorema del limite central](#Teorema-del-limite-central)
+8. [Momentos](#Momentos)
 
 ## Variable Aleatoria
 
@@ -359,4 +360,40 @@ Las variables aleatorias deben ser independientes; esto significa que el resulta
 El TLC es poderoso porque permite que la distribución de la suma o el promedio de variables aleatorias se normalice, incluso si las variables originales no siguen una distribución normal (pueden ser sesgadas o tener otra forma).
 
 Imagina que lanzas un dado muchas veces (digamos, 100 veces) y registras los resultados. Aunque la distribución de los resultados de un solo lanzamiento de un dado es uniforme y no normal, si calculas el promedio de esos 100 lanzamientos, la distribución de ese promedio se acercará a una distribución normal a medida que aumentes el número de lanzamientos.
+
+## Ley de los Grandes Números
+Es un principio fundamental en la teoría de la probabilidad que describe el resultado de realizar el mismo experimento aleatorio un número muy grande de veces. Esta ley establece que, a medida que aumenta el número de repeticiones de un experimento, la media muestral de los resultados observados se aproximará a la media real o esperada de la distribución de la variable aleatoria.
+
+Hay dos versiones principales de la Ley de los Grandes Números:
++ Ley de los Grandes Números Débil
++ Ley de los Grandes Números Fuerte
+
+Importancia de la Ley de los Grandes Números:
++ **Inferencia Estadística**: La Ley de los Grandes Números justifica la idea de que los promedios muestrales se aproximan a la media poblacional a medida que aumenta el tamaño de la muestra. Esto es crucial en la inferencia estadística.
++ **Pruebas y Experimentos**: Ayuda a entender por qué las muestras grandes proporcionan estimaciones más confiables y estables de los parámetros poblacionales.
++ **Seguros y Finanzas**: Se utiliza en el cálculo de primas de seguros y en modelos financieros, donde se asume que los resultados promedio se estabilizarán a medida que se observen más eventos.
+
+
+## Momentos
+
+Proporcionan información sobre las características de la distribución, como la tendencia central, la dispersión y la forma.
+
+Para una variable aleatoria X el r-esimo momento alrededor del origen se define como: Miu(r) = E(X^r)
+
+### Momentos centrales
+Además de los momentos alrededor del origen, a menudo se utilizan los momentos centrales, que se centran en la media de la distribución.
+
+Miu(r) = E((X-miu)^r)
+
+Los momentos centrales son útiles porque reflejan cómo se distribuyen los valores de 
+X alrededor de su media.
+
+### Importancia de los Momentos
+**Tendencia Central**: El primer momento (media) describe la tendencia central de la distribución.
+
+**Dispersión**: El segundo momento (varianza) describe cuán dispersos están los datos en relación con la media.
+
+**Forma**: Los momentos de orden superior (como el tercero y el cuarto) proporcionan información sobre la forma de la distribución, como su asimetría y su curtosis.
+
+
 
