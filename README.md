@@ -8,7 +8,10 @@
 5. [Percentiles](#Percentiles)
 6. [Quantiles](#Quantiles)
 7. [Teorema del limite central](#Teorema-del-limite-central)
-8. [Momentos](#Momentos)
+8. [Ley de los Grandes Números](#Ley-de-los-Grandes-Números)
+9. [Momentos](#Momentos)
+10. [Estimadores](#Estimadores)
+11. [Maximum Likelihood Stimator(MLE)](#Maximum-Likelihood-Stimator(MLE))
 
 ## Variable Aleatoria
 
@@ -395,5 +398,110 @@ X alrededor de su media.
 
 **Forma**: Los momentos de orden superior (como el tercero y el cuarto) proporcionan información sobre la forma de la distribución, como su asimetría y su curtosis.
 
+## Estimadores
+> Un estimador es una regla o fórmula que se aplica a cualquier muestra para obtener una estimación del parámetro.
+>
+> Una estimación es el valor numérico que se obtiene al aplicar el estimador a una muestra específica.
+
+### Estimador Insesgado
+T is unbiased cuando E(T) = verdadero valor de la medida estimada
+
+### Eficiencia (small sensibility)
+Si se conoce la media, el mejor estimador es el de menor varianza.
+
+Si no se conoce la media hay que calcular el error cuadratico medio y el que tenga menor error es mejor.
+
+Un estimador con menor varianza es considerado más eficiente porque proporciona estimaciones más consistentes y cercanas al verdadero valor del parámetro.
+
+Un estimador se considera eficiente si cumple con las siguientes propiedades:
++ **Incorruptibilidad**: El estimador debe ser insesgado, lo que significa que su valor esperado debe ser igual al verdadero valor del parámetro que está estimando.
++ **Varianza Mínima**: Entre todos los estimadores insesgados, un estimador eficiente tiene la menor varianza posible. Esta es la condición que se establece en el Teorema de Cramer-Rao, que establece un límite inferior para la varianza de estimadores insesgados.
+
+Eficiencia relativa = V(T2)/V(T1) => Si esta razon es menor que uno T2 es mas eficiente
+
+Casos en los que un estimador sesgado con menor varianza puede ser preferible a uno insesgado:
++ Cuando se trabaja con muestras pequeñas
++ Cuando la eficiencia computacional es crucial
++ En el aprendizaje automático y la estadística aplicada, a veces se utilizan estimadores sesgados porque pueden mejorar el rendimiento predictivo en datos no vistos.
++ En modelos estadísticos complejos (como modelos de regresión no lineales o modelos mixtos), puede ser difícil obtener estimadores insesgados debido a la complejidad de la función de verosimilitud.
++ En finanzas, un estimador sesgado puede ser preferido si ayuda a reducir la varianza de las estimaciones de rendimiento de activos.
++ Cuando se requiere realizar inferencias bajo ciertas condiciones o restricciones.
++ En estudios de rendimiento, como la evaluación de la efectividad de tratamientos médicos, a veces se utilizan estimadores sesgados si se ha comprobado que ofrecen resultados más robustos y útiles en situaciones específicas.
+
+### Consistencia
+Un estimador es consistente si, al aumentar el número de observaciones, las estimaciones se acercan cada vez más al valor real que se desea estimar.
+
+> Cuando la varianza tiende a 0 en caso de ser un estimador insesgado.
+
+> Cuando el MSE tiende a 0 en caso de ser un estimador sesgado.
+
+Propiedades de la Consistencia:
++ **Insesgamiento**: Un estimador consistente no tiene que ser insesgado, pero todos los estimadores insesgados son consistentes. Sin embargo, la consistencia es una propiedad más general que no depende de que el estimador sea insesgado.
++ **Varianza**: Para que un estimador sea consistente, la varianza del estimador debe tender a cero a medida que el tamaño de la muestra aumenta.
+
+Importancia de la Consistencia:
++ **Inferencia Estadística**: La consistencia es una propiedad crucial en la inferencia estadística porque garantiza que, con suficientes datos, los estimadores proporcionarán resultados cercanos a los verdaderos parámetros de la población.
++ **Toma de Decisiones**: Los estimadores consistentes son más confiables para la toma de decisiones, ya que su precisión mejora con el tamaño de la muestra.
++ **Validez de Modelos**: En modelos estadísticos y de aprendizaje automático, la consistencia de los estimadores contribuye a la validez de las conclusiones extraídas de los datos.
+
+### Estimador Asintóticamente Insesgado
+Un estimador se considera asintóticamente insesgado si su valor esperado se aproxima al verdadero valor del parámetro que estima a medida que el tamaño de la muestra aumenta. En otras palabras, aunque el estimador pueda ser sesgado para muestras pequeñas, este sesgo disminuye y tiende a cero a medida que el tamaño de la muestra se hace muy grande.
+
+Importancia del Insesgamiento Asintótico:
++ **Pruebas de Hipótesis**: En contextos donde se requiere hacer inferencias basadas en muestras grandes, los estimadores asintóticamente insesgados son útiles porque permiten suponer que los resultados se aproximan a la realidad.
++ **Confiabilidad en Grandes Muestras**: Proporciona una justificación teórica para confiar en las estimaciones a partir de muestras grandes, incluso si el estimador tiene un sesgo en muestras pequeñas.
++ **Modelos Estadísticos**: En modelos más complejos, se utiliza la propiedad de insesgamiento asintótico para validar estimadores en contextos donde se tienen limitaciones en los datos.
+
+### Error Cuadratico Medio (MSE)
+El error cuadrático medio (ECM) es una medida de la precisión de un estimador o modelo, que cuantifica la diferencia promedio entre los valores estimados y los valores reales. O sea mide la diferencia entre el estimador y lo que se estima.
+
+Se utiliza comúnmente en estadística y aprendizaje automático para evaluar el rendimiento de modelos de predicción.
+
+ECM => 1/n * sum(i=1,n)(yi-y^i)2 (el promedio de los cuadrados del valor real menos el valor estimado)
+
+Interpretación:
++ **Valores Bajos**: Un ECM bajo indica que el modelo está haciendo buenas predicciones, ya que las estimaciones están cerca de los valores reales.
++ **Valores Altos**: Un ECM alto sugiere que hay un gran error en las estimaciones, lo que significa que el modelo no está ajustando bien los datos.
+
+Propiedades del ECM:
++ **No Negativo**: El ECM siempre es mayor o igual a cero, ya que los cuadrados de las diferencias son no negativos.
++ **Sensibilidad a Errores Grandes**: Debido a que se eleva al cuadrado la diferencia, el ECM es más sensible a errores grandes. Esto puede ser útil en algunas aplicaciones donde los errores grandes son especialmente indeseables.
++ **Comparación de Modelos**: El ECM se puede utilizar para comparar diferentes modelos de predicción; el modelo con el ECM más bajo generalmente se considera el mejor.
+
+## Maximum Likelihood Stimator(MLE)
+El Estimador de Máxima Verosimilitud es un método estadístico utilizado para estimar los parámetros de un modelo probabilístico. La idea fundamental detrás de este enfoque es encontrar los parámetros que maximizan la "verosimilitud" de observar los datos dados esos parámetros.
+
+### Verosimilitud
+La verosimilitud se refiere a la probabilidad de observar los datos que tenemos, dado un conjunto específico de parámetros. Formalmente, si tenemos un conjunto de datos X = {x1, x2, ... xn} y un modelo parametrico que depende de un parametro ZETA, La funcion de verosimilitud L(ZETA|X) = P(X|ZETA).
+
+L(ZETA|X) = productoria(1,n) f(xi,ZETA)
+
+> **Probability vs Likelihood**
+>
+> La *probabilidad* es el area debajo de una distribucion fija => pr(data|distribucion)
+>
+> El *likelihood* son los valores e las y para valores fijos de datos => pr(distribucion|data)
+
+
+### Para Obtener un MLE (Procedimiento)
++ Funcion de Verosimilitud: Productoria(1,n)f(x) = Q
++ ln Q
++ Maximizar ln Q derivando con respecto al parametro
++ Igualar a 0 la expresion resultante
++ Con un solo parametro se tiene una sola ecuacion (con n parametros n ecuaciones)
++ Se resuelve el sistema
++ Los puntos obtenidos son los MLE
+
+Propiedades del MLE:
++ **Incorruptibilidad**: Los MLE son insesgados o asintóticamente insesgados, especialmente en muestras grandes.
++ **Consistencia**: A medida que el tamaño de la muestra aumenta, el MLE converge al verdadero valor del parámetro.
++ **Eficiencia**: En muchos casos, el MLE tiene la menor varianza posible entre los estimadores insesgados, lo que se conoce como la propiedad de ser el estimador más eficiente.
++ **Distribución Asintótica Normal**: Para muestras grandes, la distribución del MLE se aproxima a una distribución normal, lo que permite realizar inferencias.
+
+Si los datos son independientes y estan identicamente distribuidos:
++ l^(ZETA|X) = 1/n sum(1,n) ln f(xi|ZETA)
++ MLE consistente
++ sqrt(n)-eficiente y asintoticamente eficiente
++ l(ZETA|X) = log L(ZETA|X) = sum log f(xi,ZETA)
 
 
