@@ -5,6 +5,9 @@
 2. [Algunos conceptos](#Algunos-conceptos)
 3. [Distribuciones Discretas](#Distribuciones-Discretas)
 4. [Distribuciones Continuas](#Distribuciones-Continuas)
+5. [Percentiles](#Percentiles)
+6. [Quantiles](#Quantiles)
+7. [Teorema del limite central](#Teorema-del-limite-central)
 
 ## Variable Aleatoria
 
@@ -286,4 +289,74 @@ Caracteristicas:
 + E(x) = 
 + V(x) = 
 
+
+## Percentiles
+
+Los percentiles son valores que dividen un conjunto de datos en cien partes iguales, permitiéndote ver en qué posición relativa está un dato dentro de esa distribución. En otras palabras, el percentil indica el valor bajo el cual se encuentra un cierto porcentaje de observaciones.
+
++ **Percentil 25 (P25)**: representa el valor por debajo del cual se encuentra el 25% de los datos. También es el primer cuartil.
++ **Percentil 50 (P50)**: marca el valor por debajo del cual está el 50% de los datos y coincide con la mediana.
++ **Percentil 75 (P75)**: indica el valor debajo del cual está el 75% de los datos, y se conoce como el tercer cuartil.
+
+Los percentiles se utilizan para interpretar mejor la posición de un valor en una muestra, como decir que "tu puntaje en el examen está en el percentil 90", lo que indica que superaste al 90% de las personas que tomaron ese examen.
+
+**Propiedades**: 
++ P( Z < a ) = 0.5 (percentil 50)
++ P( Z < a ) = 0.9 (percentil 90)
++ P( Z < a) = 0.025 (percentil 2.5)
++ P( Z < a) = 0.975 (percentil 97.5)
+  
++ Z(0.975 -> valor del percentil) = 1.96 -> valor de la a
+
+Para Z -> N(0,1):
++ P(Z>a) = 1-P(Z<=a)
++ P(Z<-a) = P(Z<a)
++ P(Z<0) = 0,5
+
+**Calcular el percentil**:
+
++ Datos Ordenados: 5,10,15,20,25,30,35,40,45,50
++ Formula: Pk = (k/100)*(n+1)  k:percentil  n:cantidad de datos
++ P25 = 25/100 * 10+1 = 0.25*11 = 2,75  (El percentil 25 se encuentra entre el 2 y el 3 valor)
++ Iterpolar para encontrar el valor exacto: El segundo valor es 10 y el tercero es 15. Al estar en el 2.75, tomamos un 75% del camino entre 10 y 15: P25 = 10 + (0.75 * (15-10)) = 10 + 3.75 = 13.75
++ Resultado: el percentil 25 (P25) es aproximadamente 13.75, lo que significa que el 25% de los datos son menores o iguales a 13.75.
+
+
+## Quantiles
+
+Los quantiles son valores que dividen un conjunto de datos en intervalos iguales, donde cada intervalo contiene el mismo número de observaciones.
+
+Los quantiles se clasifican según el número de partes en las que dividen los datos:
++ **Cuartiles**: Dividen los datos en 4 partes iguales.
+  + 1er cuartil (Q1) = percentil 25
+  + 2do cuartil (Q2) = percentil 50, también conocido como la mediana
+  + 3er cuartil (Q3) = percentil 75
++ **Deciles**: Dividen los datos en 10 partes iguales.
+  + El decil 1 (D1) corresponde al percentil 10, el decil 2 al percentil 20, y así sucesivamente.
++ **Percentiles**: Dividen los datos en 100 partes iguales.
+  + Cada percentil representa el 1% de los datos (P1, P2, ..., P99). 
+
+### Funcion Quantile
+Función matemática y estadística que se usa para calcular el valor de un quantil específico en un conjunto de datos.
+
+> *¿Cuál es el valor en el conjunto de datos tal que cierto porcentaje de los datos es menor o igual a él?*
+
+Conocida como la inversa de CDF para una variable aleatoria continua:
++ F^-1 = Fx(X) = P(X<=x) = p
+
+En el calculo del percentil:
++ **Para datos discretos**: A veces necesitamos interpolar entre posiciones.
++ **Para distribuciones continuas**: Podemos obtener el valor exacto del percentil directamente mediante la función quantile, sin interpolación.
+
+## Teorema del limite central 
+Este teorema establece que, bajo ciertas condiciones, la suma (o promedio) de un gran número de variables aleatorias independientes y identicamente distribuidas (i.i.d.) se aproximará a una distribución normal, independientemente de la forma de la distribución original.
+
+El TLC es aplicable cuando el tamaño de la muestra 
+n es lo suficientemente grande.
+
+Las variables aleatorias deben ser independientes; esto significa que el resultado de una variable no afecta a las demás.
+
+El TLC es poderoso porque permite que la distribución de la suma o el promedio de variables aleatorias se normalice, incluso si las variables originales no siguen una distribución normal (pueden ser sesgadas o tener otra forma).
+
+Imagina que lanzas un dado muchas veces (digamos, 100 veces) y registras los resultados. Aunque la distribución de los resultados de un solo lanzamiento de un dado es uniforme y no normal, si calculas el promedio de esos 100 lanzamientos, la distribución de ese promedio se acercará a una distribución normal a medida que aumentes el número de lanzamientos.
 
