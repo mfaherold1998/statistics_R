@@ -12,6 +12,7 @@
 9. [Momentos](#Momentos)
 10. [Estimadores](#Estimadores)
 11. [Maximum Likelihood Stimator(MLE)](#Maximum-Likelihood-Stimator(MLE))
+12. [Intervalos de Confianza](#Intervalos-de-Confianza)
 
 ## Variable Aleatoria
 
@@ -505,3 +506,33 @@ Si los datos son independientes y estan identicamente distribuidos:
 + l(ZETA|X) = log L(ZETA|X) = sum log f(xi,ZETA)
 
 
+## Intervalos de Confianza
+
+Un intervalo de confianza es un rango de valores que se utiliza para estimar un parámetro poblacional con un nivel de confianza específico. En lugar de proporcionar un solo valor de estimación (como una media muestral), un intervalo de confianza da un rango en el cual es probable que se encuentre el parámetro real de la población.
+
+Componentes de un Intervalo de Confianza:
++ **Estimador puntual**: Es el valor calculado a partir de la muestra, como la media muestral, que actúa como el centro del intervalo.
++ **Margen de error**: Es la cantidad que se suma y resta al estimador puntual para construir el intervalo. Este depende de:
+  + El **nivel de confianza** deseado (por ejemplo, 95%, 99%).
+  + La distribución de los datos.
+  + El tamaño de la muestra.
++ **Nivel de confianza**: Es la probabilidad de que el intervalo calculado contenga el verdadero parámetro poblacional. Por ejemplo, un intervalo de confianza del 95% implica que, si repetimos el estudio muchas veces, el 95% de los intervalos construidos contendrán el valor verdadero del parámetro.
+
+### Interpretación de un Intervalo de Confianza
+
+Un intervalo de confianza del 95% para la media, por ejemplo, significa que estamos 95% seguros de que el verdadero valor de la media poblacional se encuentra dentro de ese rango. En otras palabras, si construyéramos 100 intervalos de confianza a partir de 100 muestras diferentes, esperaríamos que aproximadamente 95 de esos intervalos contengan la media verdadera.
+
+### Como calcular un intervalo de confianza
+
+Supongamos que tienes una muestra con una media muestral de 100 y una desviación estándar de 15, y quieres calcular un intervalo de confianza del 95% para la media poblacional. Con un tamaño de muestra de n=25:
++ Encuentras el valor crítico para el nivel de confianza del 95%
++ Calculas el margen de error
++ Construyes el intervalo de confianza
+
+
+Esto significa que estás 95% seguro de que la verdadera media poblacional está entre los dos valores extremos obtenidos. CI\[a,b]
+
+### Usos de los Intervalos de Confianza
+**Estimación de parámetros**: Para estimar rangos posibles para parámetros desconocidos.
+
+**Toma de decisiones**: En estudios de mercado, pruebas de hipótesis y evaluaciones científicas, un intervalo de confianza ayuda a evaluar la precisión de las estimaciones.
