@@ -536,3 +536,5 @@ Esto significa que estás 95% seguro de que la verdadera media poblacional está
 **Estimación de parámetros**: Para estimar rangos posibles para parámetros desconocidos.
 
 **Toma de decisiones**: En estudios de mercado, pruebas de hipótesis y evaluaciones científicas, un intervalo de confianza ayuda a evaluar la precisión de las estimaciones.
+
+### p-value
